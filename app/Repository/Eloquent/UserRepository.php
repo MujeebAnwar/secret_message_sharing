@@ -26,7 +26,7 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
    public function get($search = null): Collection
    {
         return $this->model
-            // ->where('id','<>',Auth::id())
+            ->where('id','<>',Auth::id())
             ->when($search, function (Builder $query, string $search) {
                 $search = "%{$search}%";
                 return $query->where('name', 'like', $search)
